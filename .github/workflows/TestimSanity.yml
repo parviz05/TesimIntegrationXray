@@ -29,3 +29,15 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - run: npm i -g @testim/testim-cli && testim --token ${{ secrets.token}} --project "rMDuwZcHfy1l6jUu7cXo"  --grid "Testim-Grid" --reporters junit -r ~/junit.xml --testId "4So4099xDBdk8Kpz"
+    
+    - uses: mikepenz/xray-action@v0.9.4
+      with:
+        username: ${{ secrets.client_id }}
+        password: ${{ secrets.client_secret }}
+        testFormat: "junit"
+        testPaths: "~/junit.xml"
+#         testExecKey: “XRAYD-14”
+        testPlanKey: "XRAYD-196"
+        continueOnImportError: false
+        projectKey: "XRAYD"
