@@ -36,13 +36,9 @@ jobs:
         testPlanKey: "XRAY-62" 
         continueOnImportError: false
         projectKey: "XRAY"
-#     - uses: mikepenz/xray-action@v0.9.4
-#       with:
-#         username: ${{ secrets.client_id }}
-#         password: ${{ secrets.client_secret }}
-#         testFormat: "junit"
-#         testPaths: "~/junit.xml"
-# #         testExecKey: “XRAY-14”
-#         testPlanKey: "PTB-852" 
-#         continueOnImportError: false
-#         projectKey: "PTB"
+    - uses: ./
+      env:
+        EXIT_CODE_FROM_REPORT: "True"
+        SLACK_CHANNEL: CKQ7C7KJN
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+        XUNIT_PATH: ~/junit.xml
